@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html class="light" lang="it">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function(){var m=window.matchMedia("(max-width: 767px)").matches;var p=location.pathname.endsWith("mobile.html");if(m&&!p){location.replace("mobile.html");}else if(!m&&p){location.replace("./");}})();</script>
+
+<meta charset="UTF-8">
+<title>Mathclick · netSENS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Newsreader','serif'],sans:['IBM Plex Sans','sans-serif'],mono:['IBM Plex Mono','monospace']}}}}</script>
+<style>
+ :root {
+ --bg-paper: #F3F1EC;
+ --ink: #14202B;
+ --slate: #4A5B68;
+ --fog: #B8C0C6;
+ --rule: #D9DAD6;
+ --dark-slate: #2A3742;
+ --amber: #E8912D;
+ --network-blue: #0B6E8F;
+ }
+ body {
+ background-color: var(--bg-paper);
+ color: var(--ink);
+ font-family: 'IBM Plex Sans', sans-serif;
+ margin: 0;
+ padding: 0;
+ -webkit-font-smoothing: antialiased;
+ }
+ .font-serif {
+ font-family: 'Newsreader', serif;
+ font-feature-settings: "kern" 1, "liga" 1;
+ }
+ .font-sans {
+ font-family: 'IBM Plex Sans', sans-serif;
+ }
+ .font-mono {
+ font-family: 'IBM Plex Mono', monospace;
+ }
+ .btn-ink {
+ background-color: var(--ink);
+ color: #F3F1EC;
+ transition: background-color 0.15s ease;
+ }
+ .btn-ink:hover {
+ background-color: #24323F;
+ }
+ .text-link {
+ color: var(--ink);
+ transition: color 0.15s ease;
+ }
+ .text-link:hover {
+ color: var(--network-blue);
+ }
+ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+ outline: 2px solid var(--network-blue);
+ outline-offset: 2px;
+ }
+ /* Specific mosaic sizing */
+ .board-tile {
+ width: 76px;
+ height: 76px;
+ border-radius: 0;
+ }
+ .footer-tile-new {
+ width: 40px;
+ height: 40px;
+ border-radius: 0;
+ }
+.font-serif{font-variant-numeric:lining-nums;font-feature-settings:"kern" 1,"liga" 1,"lnum" 1}
+</style>
+</head>
+<body class="min-h-screen text-[18px] leading-[1.6]">
+<!-- HEADER -->
+<header class="w-full bg-[#F3F1EC] border-b border-[#D9DAD6] h-[72px]">
+<div class="max-w-[1200px] w-full mx-auto h-full px-4 flex items-center justify-between">
+<div class="flex items-center">
+<!-- Logo -->
+<a href="#" class="flex items-center gap-[10px]" aria-label="Mathclick, torna all'inizio">
+<svg width="24" height="20" viewBox="0 0 24 20" aria-hidden="true">
+<rect x="2" y="13" width="20" height="3" fill="#14202B"/>
+<rect x="12" y="6" width="7" height="7" fill="#E8912D"/>
+</svg>
+<span class="font-sans font-semibold text-[22px] text-[#14202B] leading-none">Mathclick</span>
+</a>
+<div class="h-[20px] w-[1px] bg-[#D9DAD6] ml-4 mr-4">
+</div>
+<span class="inline-flex items-center gap-[8px] font-mono text-[12px] text-[#4A5B68] tracking-normal">Una startup <span class="inline-flex items-center text-[#14202B]" style="gap:5px" role="img" aria-label="TechBricks"><svg width="14" height="14" viewBox="0 0 223 219" aria-hidden="true"><g transform="translate(-797.138,-393.813)" fill="currentColor"><rect x="979.597" y="425.812" width="39.963" height="53.333"/><path d="M979.597,425.812L979.597,393.813L797.138,393.813L797.138,475.434L799.619,479.145L799.627,479.145L799.619,479.145L817.479,505.811L849.132,505.811L849.132,553.529L888.603,612.477L952.953,612.477L952.953,505.811L979.597,505.811L979.597,479.145L926.309,479.145L926.309,585.81L899.352,585.81L875.776,550.428L875.776,479.145L819.732,479.145L819.732,425.812L979.597,425.812Z"/></g></svg><span aria-hidden="true" style="font-family:'Fraunces',serif;font-weight:600;font-size:16px;line-height:1;letter-spacing:-0.01em;white-space:nowrap">.techbricks.</span></span></span>
+</div>
+<div>
+<a href="#candidatura" class="btn-ink inline-flex items-center justify-center font-sans font-semibold text-[15px] h-[44px] px-[20px] rounded-[2px]">
+ Candida il tuo impianto
+ </a>
+</div>
+</div>
+</header>
+<main>
+<!-- 1. HERO -->
+<section class="relative bg-[#F3F1EC] pt-[48px] pb-0 overflow-hidden">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<!-- Riga di didascalie -->
+<div class="flex items-center justify-between font-mono text-[12px] text-[#4A5B68] tracking-[0.04em]">
+<span>netSENS · Perdite d'acqua</span>
+<span>Mathclick · Pisa</span>
+</div>
+<!-- Titolo H1 a scalino -->
+<div class="mt-[32px]">
+<h1 class="font-serif font-[500] text-[108px] text-[#14202B] tracking-[-0.035em] leading-[0.98] text-balance">
+<span class="block">Quando un tubo perde,</span>
+<span class="block">il difficile è</span>
+<span class="block pl-[400px]">capire <span class="relative inline-block">dove.<span aria-hidden="true" class="absolute left-0 top-full mt-[24px] grid gap-[4px]" style="grid-template-columns: repeat(10, 56px); width: max-content;">
+<!-- Row 1: 10 tiles. Tile 1 is amber #E8912D, tiles 2-10 are #D9DAD6 -->
+<span class="block w-[56px] h-[56px] bg-[#E8912D]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<!-- Row 2: 10 tiles (tiles 11-20). All #D9DAD6 -->
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<!-- Row 3: 10 tiles (tiles 21-30). Tile 24 (Col 4 Row 3) is amber #E8912D, others #D9DAD6 -->
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#E8912D]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<!-- Row 4: 10 tiles (tiles 31-40). All #D9DAD6 -->
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+<span class="block w-[56px] h-[56px] bg-[#D9DAD6]"></span>
+</span>
+</span>
+</span>
+</h1>
+</div>
+<!-- Griglia: Sottotitolo/CTA a sinistra, colonna destra per frammento mosaico ancorato all'H1 -->
+<div class="mt-[24px] grid grid-cols-12 gap-6 items-start min-h-[236px]">
+<!-- Sinistra: Colonne 1-6 -->
+<div class="col-span-6 pr-4">
+<p class="font-sans text-[20px] text-[#4A5B68] leading-[1.5] max-w-[560px]">
+ netSENS è un servizio di diagnostica basato su AI e sensori per siti industriali, campus ed edifici: indica dove è più probabile che si perda acqua e quale zona ispezionare per prima. Senza squadre specializzate.
+ </p>
+<div class="mt-[28px] flex items-center gap-[32px]">
+<a href="#candidatura" class="btn-ink inline-flex items-center justify-center font-sans font-semibold text-[17px] h-[56px] px-[28px] rounded-[2px]">
+ Candida il tuo impianto
+ </a>
+<a href="#come-si-lavora" class="inline-flex items-center min-h-[44px] font-sans font-medium text-[17px] text-[#14202B] underline decoration-1 underline-offset-[6px] hover:text-[#0B6E8F] transition-colors">
+ Come si lavora
+ </a>
+</div>
+<p class="mt-[14px] font-sans text-[15px] text-[#4A5B68]">
+ Cerchiamo i primi impianti per una prova a pagamento, con obiettivi e budget definiti.
+ </p>
+</div>
+</div>
+<!-- In fondo alla hero: filetto e didascalia aggiornata -->
+<div class="mt-[48px] pt-[20px] pb-[20px] border-t border-[#D9DAD6]">
+<span class="font-mono text-[12px] text-[#4A5B68]">Prova di concetto computazionale completata · prossimo passo: prova in laboratorio</span>
+</div>
+</div>
+</section>
+<!-- 2. HANNO SOSTENUTO MATHCLICK -->
+<section class="w-full bg-[#F3F1EC] py-[28px] border-b border-[#D9DAD6]">
+<div class="max-w-[1200px] w-full mx-auto px-4 flex items-center justify-between">
+<span class="font-mono text-[12px] text-[#4A5B68]">Hanno sostenuto Mathclick</span>
+<div class="flex items-center">
+<span class="inline-flex items-center text-[#14202B]" style="gap:7px" role="img" aria-label="TechBricks"><svg width="20" height="20" viewBox="0 0 223 219" aria-hidden="true"><g transform="translate(-797.138,-393.813)" fill="currentColor"><rect x="979.597" y="425.812" width="39.963" height="53.333"/><path d="M979.597,425.812L979.597,393.813L797.138,393.813L797.138,475.434L799.619,479.145L799.627,479.145L799.619,479.145L817.479,505.811L849.132,505.811L849.132,553.529L888.603,612.477L952.953,612.477L952.953,505.811L979.597,505.811L979.597,479.145L926.309,479.145L926.309,585.81L899.352,585.81L875.776,550.428L875.776,479.145L819.732,479.145L819.732,425.812L979.597,425.812Z"/></g></svg><span aria-hidden="true" style="font-family:'Fraunces',serif;font-weight:600;font-size:23px;line-height:1;letter-spacing:-0.01em;white-space:nowrap">.techbricks.</span></span>
+<div class="h-[20px] w-[1px] bg-[#D9DAD6] mx-6">
+</div>
+<span class="inline-flex items-center text-[#4A5B68]" style="gap:6px" role="img" aria-label="ESA BIC Lazio"><svg width="55" height="20" viewBox="0 0 832 300" fill="currentColor" aria-hidden="true"><path d="M0 0 C3 2 5 4 7 7 C8 8 9 8 10 9 C30 28 42 54 49 81 C49 81 49 81 50 83 C54 98 53 115 52 131 C52 131 52 131 51 131 C51 130 51 130 51 129 C49 101 43 72 21 52 C9 42 -5 35 -22 34 C-22 34 -23 34 -24 34 C-46 33 -67 41 -82 55 C-97 69 -105 89 -106 109 C-106 110 -106 111 -106 113 C-107 138 -98 163 -80 182 C-63 200 -37 213 -12 213 C-10 213 -8 213 -6 213 C-5 213 -4 213 -2 213 C4 213 10 213 16 212 C7 228 -12 240 -28 248 C-28 248 -29 248 -30 249 C-65 267 -106 269 -144 258 C-151 255 -157 253 -163 250 C-163 249 -164 249 -165 249 C-200 232 -226 200 -239 163 C-251 125 -250 84 -232 48 C-220 25 -203 4 -181 -10 C-180 -11 -180 -11 -179 -11 C-123 -47 -50 -43 0 0 Z M-192 104 C-196 109 -197 114 -197 121 C-195 127 -191 131 -186 134 C-181 136 -174 135 -169 134 C-165 131 -162 127 -160 122 C-159 116 -159 111 -162 106 C-165 102 -169 99 -174 98 C-181 97 -187 98 -192 104 Z " transform="translate(246.6171875,35.21875)"/><path d="M0 0 C19 16 30 42 32 67 C32 73 32 78 32 84 C-3 84 -38 84 -74 84 C-74 74 -74 63 -74 53 C-53 53 -33 53 -13 53 C-15 41 -18 31 -29 24 C-37 19 -47 18 -57 20 C-65 22 -73 26 -78 34 C-88 53 -88 75 -82 96 C-79 106 -73 113 -64 118 C-53 123 -43 125 -31 121 C-24 118 -18 113 -15 106 C-14 103 -13 101 -12 98 C3 98 17 98 32 98 C30 115 20 132 7 143 C-11 156 -34 162 -56 159 C-74 156 -89 149 -103 137 C-103 137 -103 137 -104 135 C-121 120 -129 96 -130 74 C-130 50 -123 26 -107 8 C-78 -21 -33 -26 0 0 Z " transform="translate(464.625,83.0625)"/><path d="M0 0 C1 1 1 1 2 2 C3 2 3 3 4 3 C12 11 17 21 19 32 C19 36 19 40 19 44 C7 44 -5 44 -17 44 C-18 40 -19 36 -20 32 C-24 25 -27 21 -35 18 C-44 15 -57 15 -66 20 C-70 22 -72 25 -75 29 C-76 34 -76 38 -73 43 C-66 48 -58 50 -49 51 C-47 52 -44 52 -42 52 C-41 53 -40 53 -38 53 C5 61 5 61 17 77 C25 90 27 103 24 118 C21 133 11 145 -3 153 C-25 164 -53 165 -76 158 C-92 152 -105 142 -113 127 C-117 118 -119 110 -119 101 C-106 101 -94 101 -81 101 C-80 103 -79 106 -78 109 C-77 111 -76 113 -75 115 C-75 116 -74 117 -74 118 C-69 125 -63 127 -56 129 C-52 130 -52 130 -49 130 C-48 130 -48 130 -47 130 C-38 130 -29 129 -22 123 C-17 119 -16 115 -16 109 C-16 105 -17 103 -19 100 C-24 96 -29 95 -35 93 C-35 93 -36 93 -37 93 C-41 92 -44 91 -47 91 C-89 82 -89 82 -101 72 C-102 71 -102 71 -103 70 C-109 65 -113 56 -115 48 C-116 31 -113 17 -102 4 C-77 -21 -28 -21 0 0 Z " transform="translate(633.86328125,81.234375)"/><path d="M0 0 C2 -0 4 -0 7 -0 C25 -0 42 4 55 17 C72 34 70 59 71 82 C71 85 71 87 71 90 C71 98 71 106 71 114 C71 119 71 124 71 129 C71 131 71 133 71 135 C71 146 72 156 74 166 C75 168 75 170 75 171 C62 171 48 171 34 171 C30 162 30 162 30 158 C30 159 30 159 29 159 C8 173 -12 180 -37 175 C-53 171 -66 163 -74 150 C-81 137 -83 124 -79 110 C-74 96 -63 87 -50 80 C-38 75 -25 73 -12 72 C15 68 15 68 22 61 C25 56 26 52 25 47 C24 42 21 40 18 37 C7 31 -4 31 -16 34 C-22 37 -26 41 -29 47 C-31 51 -31 54 -32 58 C-44 58 -57 58 -71 58 C-71 42 -67 29 -55 17 C-40 2 -20 -0 0 0 Z M24 90 C20 93 16 94 11 95 C10 95 9 95 8 96 C4 97 -0 98 -5 98 C-27 103 -27 103 -33 111 C-36 117 -37 121 -37 127 C-34 135 -30 139 -23 142 C-12 146 1 143 11 139 C15 138 17 136 19 133 C20 133 21 132 21 132 C31 120 28 103 28 88 C26 88 26 88 24 90 Z " transform="translate(756.628173828125,66.62939453125)"/><path d="M0 0 C7 5 13 12 16 21 C16 24 16 27 16 31 C-4 31 -24 31 -44 31 C-44 40 -44 50 -44 60 C-10 60 24 60 59 60 C59 72 57 81 48 90 C47 91 46 92 46 93 C45 93 44 94 44 94 C32 106 14 109 -2 109 C-18 108 -33 103 -45 92 C-58 76 -61 58 -60 38 C-58 24 -52 10 -41 1 C-28 -7 -13 -8 0 0 Z " transform="translate(239.3671875,106.47265625)"/></svg><span aria-hidden="true" class="font-sans font-semibold" style="font-size:17px;line-height:1">BIC Lazio</span></span>
+<div class="h-[20px] w-[1px] bg-[#D9DAD6] mx-6">
+</div>
+<span class="inline-flex items-center text-[#4A5B68]" style="gap:6px" role="img" aria-label="Faros"><svg width="51" height="18" viewBox="0 0 441 156" fill="currentColor" aria-hidden="true"><path d="M0 0 C1 -0 2 -0 3 -0 C12 0 20 2 27 9 C33 17 34 28 34 38 C34 39 34 40 34 41 C34 44 34 48 34 51 C34 53 34 56 34 58 C34 63 34 68 34 73 C34 79 34 86 34 92 C34 97 34 102 34 107 C34 109 34 111 34 114 C34 117 34 120 34 124 C34 124 34 125 34 126 C34 137 32 146 26 154 C22 157 18 157 13 157 C12 157 11 157 10 157 C8 157 6 157 4 157 C0 157 -3 157 -6 157 C-9 157 -11 157 -13 157 C-14 157 -15 157 -16 157 C-19 157 -22 157 -25 155 C-32 147 -33 136 -33 126 C-33 125 -33 124 -33 123 C-33 119 -33 116 -33 112 C-33 110 -33 107 -33 105 C-33 100 -33 95 -33 90 C-33 83 -33 77 -33 70 C-33 65 -33 60 -33 55 C-33 52 -33 50 -33 48 C-33 44 -33 41 -33 37 C-33 36 -33 35 -33 34 C-33 24 -31 15 -24 8 C-17 1 -9 -0 0 0 Z M-7 25 C-10 28 -10 29 -10 33 C-10 34 -10 35 -10 35 C-10 36 -10 37 -10 38 C-10 39 -10 40 -10 41 C-10 45 -10 48 -10 52 C-10 54 -10 56 -10 59 C-10 64 -10 69 -10 74 C-10 80 -10 86 -10 93 C-10 98 -10 102 -10 107 C-10 110 -10 112 -10 114 C-10 118 -10 121 -10 124 C-10 125 -10 126 -10 127 C-10 131 -10 134 -8 137 C-4 140 -2 141 3 141 C6 140 7 139 10 136 C10 134 11 131 11 128 C11 127 11 126 11 125 C11 125 11 125 11 123 C11 122 11 121 11 120 C11 116 11 113 11 110 C11 108 11 105 11 103 C11 98 11 94 11 89 C11 83 11 77 11 71 C11 66 11 61 11 57 C11 54 11 52 11 50 C11 47 11 43 11 40 C11 39 11 39 11 38 C11 32 10 29 8 24 C3 21 -3 22 -7 25 Z " transform="translate(308.4375,-0.375)"/><path d="M0 0 C5 6 9 13 9 21 C9 21 9 21 9 24 C9 25 9 26 9 27 C9 28 9 29 9 30 C9 34 9 38 9 41 C9 43 9 46 9 48 C9 54 9 60 9 66 C1 66 -6 66 -13 66 C-14 64 -14 62 -14 60 C-14 59 -14 58 -15 57 C-15 56 -15 55 -15 54 C-15 52 -15 50 -15 49 C-15 45 -15 42 -15 39 C-15 36 -15 33 -15 31 C-15 30 -15 29 -15 28 C-15 27 -15 26 -15 25 C-15 24 -15 24 -15 23 C-15 20 -16 19 -18 18 C-22 16 -27 17 -31 18 C-32 22 -33 26 -33 30 C-33 31 -33 32 -33 33 C-33 34 -33 36 -33 38 C-33 40 -33 41 -33 43 C-33 56 -32 66 -23 77 C-20 79 -17 82 -13 84 C-3 91 6 101 9 114 C10 125 10 137 3 146 C1 150 -1 150 -5 151 C-7 151 -9 151 -11 151 C-12 151 -12 151 -14 151 C-16 151 -18 151 -21 151 C-24 151 -27 151 -30 151 C-33 151 -35 151 -37 151 C-38 151 -39 151 -40 151 C-46 151 -46 151 -49 149 C-58 138 -57 125 -56 112 C-49 112 -41 112 -33 112 C-33 120 -33 120 -33 123 C-33 123 -33 124 -33 125 C-33 125 -33 125 -33 127 C-32 129 -32 129 -30 132 C-27 133 -23 133 -19 133 C-17 132 -17 132 -15 129 C-14 123 -15 118 -18 113 C-23 107 -27 103 -33 99 C-45 90 -53 80 -56 64 C-57 60 -57 57 -57 53 C-57 52 -57 51 -57 50 C-57 48 -57 46 -57 44 C-57 41 -57 38 -57 35 C-57 33 -57 31 -57 29 C-57 28 -57 27 -57 26 C-57 17 -55 9 -49 2 C-37 -11 -14 -9 0 0 Z " transform="translate(432.3125,6.125)"/><path d="M0 0 C15 0 29 0 44 0 C45 3 45 7 46 10 C46 11 46 13 46 14 C46 15 46 16 46 17 C41 18 36 20 32 21 C30 22 28 22 27 23 C22 24 18 25 13 26 C11 27 9 27 8 28 C7 28 6 29 5 29 C4 29 4 29 2 30 C0 30 0 30 -3 30 C-3 28 -3 25 -3 23 C-3 23 -3 23 -3 21 C-2 14 -1 7 0 0 Z " transform="translate(92,1)"/><path d="M0 0 C19 0 39 0 59 0 C60 4 60 7 60 11 C60 11 60 11 60 13 C60 17 60 20 59 23 C47 23 35 23 23 23 C23 46 23 70 23 94 C33 94 43 94 54 94 C54 101 54 109 54 116 C44 116 34 116 23 116 C23 129 23 141 23 154 C15 154 8 154 0 154 C0 103 0 52 0 0 Z " transform="translate(0,2)"/><path d="M0 0 C48 0 48 0 56 8 C64 17 64 30 64 42 C64 43 64 44 64 46 C64 48 64 51 64 54 C64 57 64 61 64 64 C64 68 64 71 64 74 C64 76 64 77 64 78 C64 89 63 98 56 107 C54 109 52 110 49 112 C51 117 53 121 55 125 C56 126 56 127 56 128 C58 130 59 133 60 135 C62 139 63 142 65 145 C66 146 66 147 66 148 C69 153 69 153 69 154 C61 154 52 154 44 154 C41 149 39 144 36 139 C35 137 35 135 34 134 C32 131 31 129 30 126 C30 125 29 125 29 124 C26 118 26 118 26 116 C25 116 24 116 23 116 C23 129 23 141 23 154 C15 154 8 154 0 154 C0 103 0 52 0 0 Z M23 22 C23 31 23 41 23 50 C23 54 23 59 23 63 C23 67 23 72 23 76 C23 77 23 79 23 81 C23 83 23 85 23 87 C23 89 23 90 23 91 C23 94 23 94 24 95 C29 95 34 95 38 92 C41 89 41 86 41 82 C41 80 41 79 41 78 C41 77 41 76 41 74 C41 73 41 72 41 71 C41 68 41 65 41 63 C41 59 41 56 41 53 C41 49 41 46 41 43 C41 42 41 40 41 39 C41 38 41 37 41 36 C41 35 41 34 41 33 C41 30 40 28 39 25 C35 23 33 23 29 22 C29 22 29 22 26 22 C25 22 25 22 23 22 Z " transform="translate(177,2)"/><path d="M0 0 C1 8 1 15 2 23 C-11 27 -23 31 -36 34 C-37 35 -38 35 -40 36 C-42 36 -44 37 -46 37 C-47 38 -48 38 -49 38 C-52 39 -52 39 -56 39 C-56 35 -55 31 -55 28 C-55 27 -55 25 -55 24 C-55 23 -55 22 -55 21 C-54 21 -54 21 -54 18 C-54 16 -54 16 -53 14 C-51 13 -51 13 -49 13 C-48 12 -48 12 -47 12 C-46 12 -45 12 -44 11 C-44 11 -44 11 -41 10 C-38 10 -35 9 -32 8 C-30 7 -28 7 -26 6 C-22 5 -18 4 -13 3 C-12 2 -10 2 -9 1 C-6 0 -3 0 0 0 Z " transform="translate(140,38)"/><path d="M0 0 C0 4 0 4 2 22 C-2 24 -6 26 -11 27 C-12 27 -13 28 -14 28 C-16 28 -17 29 -18 29 C-19 29 -21 30 -22 30 C-24 31 -27 32 -30 33 C-33 34 -36 35 -40 36 C-43 37 -46 38 -49 38 C-51 39 -52 39 -53 40 C-54 40 -55 40 -57 41 C-58 41 -59 41 -60 41 C-62 42 -62 42 -65 41 C-65 38 -64 35 -64 32 C-64 31 -64 30 -64 29 C-64 28 -64 28 -64 27 C-64 26 -63 25 -63 24 C-63 22 -62 19 -61 17 C-59 16 -59 16 -55 15 C-55 15 -55 15 -52 14 C-51 14 -51 14 -48 13 C-47 12 -46 12 -44 12 C-41 11 -38 10 -34 9 C-31 8 -29 7 -26 6 C-20 5 -14 3 -9 1 C-8 1 -7 1 -6 1 C-3 0 -3 0 0 0 Z " transform="translate(144,81)"/><path d="M0 0 C1 11 2 21 3 32 C-7 32 -16 32 -26 32 C-27 30 -27 27 -28 25 C-32 24 -34 24 -38 24 C-41 27 -43 28 -44 32 C-53 32 -62 32 -72 32 C-72 28 -71 24 -71 20 C-62 17 -54 15 -45 12 C-41 11 -37 10 -33 9 C-29 7 -25 6 -21 5 C-20 5 -18 4 -17 4 C-15 3 -13 2 -11 2 C-9 1 -8 1 -7 1 C-4 0 -4 0 0 0 Z " transform="translate(148,124)"/></svg></span>
+<div class="h-[20px] w-[1px] bg-[#D9DAD6] mx-6">
+</div>
+<span class="inline-flex items-center text-[#4A5B68]" style="gap:6px" role="img" aria-label="CALLIOPE · MIMIT"><svg width="97" height="20" viewBox="0 0 742 153" fill="currentColor" aria-hidden="true"><path d="M0 0 C7 4 11 10 14 18 C16 26 16 34 12 41 C7 48 3 53 -6 55 C-14 57 -20 55 -27 50 C-33 44 -37 39 -38 30 C-38 20 -37 12 -30 5 C-22 -3 -11 -5 0 0 Z " transform="translate(37.57421875,2.55078125)"/><path d="M0 0 C7 5 9 11 12 18 C12 21 12 23 12 26 C12 26 12 27 12 28 C12 28 12 28 12 30 C9 30 6 30 3 30 C2 30 1 30 -0 30 C-1 30 -1 30 -3 30 C-4 30 -4 30 -5 30 C-7 30 -7 30 -8 29 C-8 27 -8 25 -9 23 C-10 17 -10 17 -13 15 C-18 14 -23 13 -28 16 C-30 19 -30 22 -30 25 C-30 26 -30 27 -30 29 C-30 30 -30 31 -30 32 C-30 33 -30 34 -30 36 C-30 38 -30 41 -30 43 C-30 47 -30 51 -30 55 C-30 57 -30 60 -30 62 C-30 63 -30 64 -30 65 C-30 66 -30 68 -30 69 C-30 70 -30 71 -30 71 C-30 74 -29 76 -28 78 C-23 80 -18 80 -13 79 C-10 77 -9 75 -9 71 C-9 69 -8 66 -8 64 C-8 61 -8 61 -7 60 C-6 60 -4 60 -3 60 C-2 60 -2 60 -0 60 C1 60 2 60 3 60 C3 60 4 60 5 60 C8 60 10 60 12 60 C12 70 12 81 5 89 C-3 97 -12 98 -23 98 C-31 98 -38 95 -44 89 C-51 81 -51 71 -51 60 C-51 59 -51 58 -51 57 C-51 55 -51 53 -51 50 C-51 47 -51 43 -51 40 C-51 38 -51 36 -51 33 C-51 32 -51 31 -51 30 C-51 20 -50 11 -42 3 C-32 -7 -12 -7 0 0 Z " transform="translate(236,18)"/><path d="M0 0 C7 6 10 12 12 21 C12 23 12 25 12 26 C12 27 12 28 12 29 C12 30 12 31 12 32 C12 33 12 34 12 35 C12 38 12 40 12 42 C12 45 12 49 12 52 C12 54 12 56 12 59 C12 60 12 61 12 62 C12 71 11 81 4 89 C-3 96 -11 97 -20 98 C-30 97 -37 96 -44 89 C-50 82 -51 75 -52 67 C-52 66 -52 65 -52 64 C-52 63 -52 62 -52 61 C-52 60 -52 60 -52 57 C-52 55 -52 53 -52 50 C-52 47 -52 43 -52 39 C-52 37 -52 35 -52 33 C-52 31 -52 30 -52 29 C-52 19 -50 10 -43 3 C-32 -7 -12 -8 0 0 Z M-30 16 C-33 22 -33 28 -33 34 C-33 34 -33 34 -33 37 C-33 39 -33 41 -33 43 C-33 46 -33 49 -33 53 C-33 55 -33 57 -33 59 C-33 60 -33 61 -33 62 C-33 68 -32 72 -29 77 C-25 80 -21 81 -16 80 C-12 79 -10 77 -8 73 C-8 69 -8 65 -8 61 C-8 60 -8 59 -8 58 C-8 55 -8 53 -8 50 C-8 46 -8 43 -8 39 C-8 36 -8 34 -8 31 C-8 31 -8 31 -8 28 C-8 27 -8 26 -8 25 C-8 24 -8 23 -8 22 C-8 19 -10 17 -11 14 C-18 10 -25 11 -30 16 Z " transform="translate(575.39453125,18.62890625)"/><path d="M0 0 C5 3 9 8 11 13 C12 20 11 26 7 32 C3 37 -2 40 -8 41 C-15 41 -20 40 -26 35 C-30 31 -32 26 -33 20 C-33 13 -31 8 -26 3 C-18 -4 -9 -5 0 0 Z " transform="translate(93.9921875,17.796875)"/><path d="M0 0 C8 0 16 0 25 0 C39 56 39 56 44 77 C44 78 45 80 45 82 C45 84 46 86 47 88 C47 89 47 91 47 92 C48 95 48 95 48 100 C42 100 36 100 30 100 C29 98 29 95 28 93 C28 92 28 92 27 91 C27 87 26 84 25 80 C21 80 21 80 -1 79 C-1 82 -2 84 -2 87 C-3 91 -5 96 -6 100 C-12 100 -18 100 -24 100 C-23 94 -22 88 -21 82 C-21 81 -20 80 -20 79 C-20 76 -19 74 -18 71 C-18 69 -17 67 -17 65 C-16 61 -15 57 -14 52 C-12 47 -11 42 -10 37 C-9 32 -8 28 -7 24 C-6 22 -6 20 -5 18 C-4 16 -4 13 -3 10 C-3 9 -3 9 -3 8 C-1 2 -1 2 0 0 Z M12 24 C10 28 9 33 8 37 C8 38 8 39 8 39 C7 42 7 44 6 46 C6 47 6 49 5 50 C5 54 4 57 3 61 C9 61 15 61 21 61 C18 49 16 36 13 24 C13 24 12 24 12 24 Z " transform="translate(286,15)"/><path d="M0 0 C6 0 13 0 19 0 C19 27 19 54 19 82 C29 82 39 82 49 82 C51 84 50 86 50 89 C50 89 50 90 50 91 C50 91 50 91 50 93 C50 99 50 99 49 100 C33 100 17 100 0 100 C0 67 0 34 0 0 Z " transform="translate(350,15)"/><path d="M0 0 C6 0 13 0 19 0 C19 27 19 54 19 82 C29 82 39 82 49 82 C51 84 50 86 50 89 C50 89 50 90 50 91 C50 91 50 91 50 93 C50 99 50 99 49 100 C33 100 17 100 0 100 C0 67 0 34 0 0 Z " transform="translate(416,15)"/><path d="M0 0 C3 -0 6 -0 9 -0 C10 -0 11 -0 12 -0 C13 -0 14 -0 15 -0 C15 -0 15 -0 17 -0 C19 0 19 0 20 1 C20 4 20 7 20 10 C20 11 20 12 20 13 C20 16 20 19 20 22 C20 25 20 27 20 29 C20 34 20 38 20 43 C20 49 20 55 20 61 C20 65 20 70 20 74 C20 76 20 79 20 81 C20 84 20 87 20 90 C20 91 20 92 20 93 C20 99 20 99 19 100 C18 100 16 100 15 100 C14 100 13 100 13 100 C12 100 11 100 10 100 C9 100 8 100 7 100 C7 100 6 100 5 100 C4 100 4 100 3 100 C1 100 1 100 0 99 C-0 96 -0 93 -0 90 C-0 89 -0 88 -0 87 C-0 84 -0 80 -0 77 C-0 75 -0 73 -0 71 C-0 65 -0 59 -0 53 C-0 47 -0 41 -0 35 C-0 23 -0 12 0 0 Z " transform="translate(483,15)"/><path d="M0 0 C5 -0 9 -0 14 -0 C15 -0 17 -0 18 -0 C32 -0 45 -1 55 9 C55 9 55 9 58 12 C63 18 64 28 63 36 C61 44 58 50 51 55 C43 59 36 60 27 60 C26 60 26 60 25 60 C23 60 22 60 20 60 C20 61 20 61 20 64 C20 68 20 72 20 77 C20 78 20 80 20 82 C20 85 20 88 20 90 C20 91 20 92 20 93 C20 95 20 97 20 99 C18 101 17 100 15 100 C14 100 13 100 13 100 C12 100 11 100 10 100 C9 100 8 100 7 100 C7 100 6 100 5 100 C4 100 4 100 3 100 C1 100 1 100 0 99 C-0 96 -0 93 -0 90 C-0 89 -0 88 -0 87 C-0 84 -0 80 -0 77 C-0 75 -0 73 -0 71 C-0 65 -0 59 -0 53 C-0 47 -0 41 -0 35 C-0 23 -0 12 0 0 Z M20 16 C20 25 20 34 20 44 C35 44 35 44 41 40 C44 35 43 30 43 25 C41 21 39 19 36 17 C32 16 32 16 20 16 Z " transform="translate(608,15)"/><path d="M0 0 C17 0 34 0 52 0 C52 6 52 11 52 17 C41 17 30 17 19 17 C19 25 19 32 19 40 C27 40 36 40 44 40 C44 46 44 51 44 57 C36 57 28 57 19 57 C19 65 19 74 19 82 C30 82 41 82 53 82 C53 88 53 94 53 100 C36 100 18 100 0 100 C0 67 0 34 0 0 Z " transform="translate(689,15)"/><path d="M0 0 C4 3 7 5 9 10 C10 17 9 21 5 26 C0 30 -4 31 -9 31 C-15 29 -20 26 -23 21 C-24 15 -24 10 -21 5 C-16 -2 -7 -3 0 0 Z " transform="translate(130.3125,51.91796875)"/><path d="M0 0 C3 2 5 4 8 7 C8 8 8 9 8 10 C7 10 6 10 5 10 C-9 13 -18 20 -28 30 C-29 31 -30 31 -31 32 C-31 32 -31 32 -32 34 C-35 33 -35 33 -37 30 C-39 25 -39 21 -37 17 C-31 5 -13 -5 0 0 Z " transform="translate(38.3125,74.1875)"/><path d="M0 0 C7 4 16 10 19 18 C20 23 19 27 16 32 C12 32 12 32 9 29 C8 28 8 27 7 26 C-3 16 -14 12 -27 9 C-27 6 -27 6 -25 4 C-25 4 -25 4 -23 2 C-22 1 -22 1 -21 0 C-15 -5 -7 -3 0 0 Z " transform="translate(89.9375,75.375)"/><path d="M0 0 C4 4 9 8 13 12 C9 17 6 20 1 24 C0 23 -0 23 -1 22 C-8 15 -14 9 -24 8 C-34 8 -40 11 -48 18 C-52 22 -52 22 -54 24 C-57 23 -60 21 -62 18 C-63 17 -64 16 -64 16 C-65 15 -65 15 -66 14 C-60 3 -49 -4 -38 -8 C-24 -11 -11 -8 0 0 Z " transform="translate(81,106)"/><path d="M0 0 C3 2 5 4 8 7 C9 8 9 8 10 9 C11 10 12 11 13 12 C11 17 7 22 2 24 C-3 25 -7 26 -11 24 C-15 20 -18 17 -22 13 C-11 -3 -11 -3 0 0 Z " transform="translate(59,128)"/></svg><span aria-hidden="true" class="font-sans font-semibold" style="font-size:17px;line-height:1">· MIMIT</span></span>
+</div>
+</div>
+</section>
+<!-- 3. IL PROBLEMA -->
+<section class="w-full bg-[#F3F1EC] py-[96px]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<h2 class="font-serif font-[500] text-[60px] text-[#14202B] leading-[1.05] max-w-[900px] text-balance tracking-[-0.03em]">
+ Cercare una perdita costa. Spesso più dell'acqua persa.
+ </h2>
+<div class="mt-[64px] border-b border-[#D9DAD6]">
+<!-- Riga 01 -->
+<div class="border-t border-[#D9DAD6] py-[28px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-5 font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Disegni che non bastano</div>
+<div class="col-span-1">
+</div>
+<div class="col-span-6 font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Negli edifici e negli impianti più vecchi le tubature sono documentate solo in parte: non si sa da che parte cominciare.
+ </div>
+</div>
+<!-- Riga 02 -->
+<div class="border-t border-[#D9DAD6] py-[28px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-5 font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Ricerche a tentativi</div>
+<div class="col-span-1">
+</div>
+<div class="col-span-6 font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Giornate di tecnici, accessi, fermi e visite ripetute prima di trovare il punto giusto.
+ </div>
+</div>
+<!-- Riga 03 -->
+<div class="border-t border-[#D9DAD6] py-[28px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-5 font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Costi che salgono</div>
+<div class="col-span-1">
+</div>
+<div class="col-span-6 font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Le perdite pesano sulle bollette dell'acqua e dell'energia e sulla manutenzione, anche quando nessuno le vede.
+ </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. PERCHÉ ADESSO (Capitolo scuro) -->
+<section class="w-full bg-[#14202B] text-[#F3F1EC] pt-[160px] pb-0">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<span class="font-mono text-[12px] text-[#B8C0C6] block">Perché adesso</span>
+<!-- Il numero, da solo sulla sua riga -->
+<div class="mt-[32px] select-none">
+<div class="font-serif font-[500] text-[220px] leading-[0.9] text-[#F3F1EC] tracking-[-0.04em] text-left">
+ 42,4%
+ </div>
+</div>
+<!-- Sotto il numero, 32px più in basso, nelle colonne 8-12 -->
+<div class="mt-[32px] grid grid-cols-12 gap-6">
+<div class="col-span-7">
+</div>
+<div class="col-span-5">
+<p class="font-sans text-[22px] text-[#F3F1EC] leading-[1.45]">
+ dell'acqua immessa nelle reti comunali italiane è andata persa in distribuzione nel 2022.
+ </p>
+<p class="mt-[12px] font-mono text-[12px] text-[#B8C0C6]">
+ Fonte: ISTAT, 2024, perdite idriche totali
+ </p>
+</div>
+</div>
+<!-- Filetto 1px #2A3742 con 64px spazio sopra e sotto -->
+<div class="mt-[64px] mb-[64px] h-[1px] w-full bg-[#2A3742]">
+</div>
+<!-- Due colonne statistiche -->
+<div class="grid grid-cols-12 gap-12">
+<div class="col-span-6">
+<div class="font-serif font-[500] text-[56px] text-[#F3F1EC] leading-[1.05] tracking-[-0.03em]">5,8%</div>
+<p class="mt-[16px] font-sans text-[17px] text-[#B8C0C6] leading-[1.5]">
+ dei residenti nei capoluoghi, oltre un milione di persone, ha subito razionamenti dell'acqua nel 2024.
+ </p>
+<p class="mt-[8px] font-mono text-[12px] text-[#B8C0C6]">
+ Fonte: ISTAT, 2026
+ </p>
+</div>
+<div class="col-span-6">
+<div class="font-serif font-[500] text-[56px] text-[#F3F1EC] leading-[1.05] tracking-[-0.03em]">+10%</div>
+<p class="mt-[16px] font-sans text-[17px] text-[#B8C0C6] leading-[1.5]">
+ di efficienza idrica entro il 2030: è il minimo che raccomanda l'Unione europea.
+ </p>
+<p class="mt-[8px] font-mono text-[12px] text-[#B8C0C6]">
+ Fonte: Commissione europea, 2025
+ </p>
+</div>
+</div>
+<!-- Filetto con 96px spazio sopra -->
+<div class="mt-[96px] h-[1px] w-full bg-[#2A3742]">
+</div>
+<!-- Frase a tutta larghezza e testo colonne 7-12 -->
+<div class="mt-[64px]">
+<h3 class="font-serif italic font-[500] text-[64px] leading-[1.05] text-[#F3F1EC] text-left tracking-[-0.03em]">
+ Capire molto da pochi dati.
+ </h3>
+<div class="mt-[32px] grid grid-cols-12 gap-6">
+<div class="col-span-6">
+</div>
+<div class="col-span-6">
+<p class="font-sans text-[20px] text-[#B8C0C6] leading-[1.5]">
+ È l'idea da cui nasce Mathclick. Chi gestisce un impianto non ha bisogno di altri grafici: gli serve sapere dove intervenire per primo, senza perdere giorni a cercare.
+ </p>
+</div>
+</div>
+</div>
+<!-- 128px sotto, Titolo H2 con barra ambra su 'dove' -->
+<div class="mt-[128px]">
+<h2 class="font-serif font-[500] text-[76px] text-[#F3F1EC] leading-[1.05] max-w-[1100px] text-balance tracking-[-0.03em]">
+ I contatori ti dicono quanto consumi. netSENS ti dice <span class="relative inline-block">dove<span class="absolute left-0 right-0 -bottom-[6px] h-[6px] bg-[#E8912D]">
+</span>
+</span> guardare.
+ </h2>
+</div>
+</div>
+<!-- 64px sotto: Mosaico bordo a bordo (1280px wide) -->
+<div class="mt-[64px] w-full overflow-hidden flex justify-center bg-[#14202B]">
+<!-- 16 cols x 6 rows of 76px tiles with 4px gap -->
+<div class="inline-grid grid-cols-16 gap-[4px] select-none" style="grid-template-columns: repeat(16, 76px);">
+<!-- ROW 1 (Cols 1-16) -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- ROW 2 (Cols 1-16): Col 4 & Col 5 are Amber -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- Col 4 Row 2: with "da qui" text -->
+<div class="board-tile bg-[#E8912D] flex items-center justify-center font-mono text-[13px] text-[#14202B] font-medium leading-none">da qui</div>
+<!-- Col 5 Row 2 -->
+<div class="board-tile bg-[#E8912D]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- ROW 3 (Cols 1-16): Col 5 is Amber -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- Col 5 Row 3 -->
+<div class="board-tile bg-[#E8912D]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- ROW 4 (Cols 1-16): All dark-slate -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- ROW 5 (Cols 1-16): Col 12 and Col 13 are Amber -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- Col 12 Row 5 -->
+<div class="board-tile bg-[#E8912D]"></div>
+<!-- Col 13 Row 5 -->
+<div class="board-tile bg-[#E8912D]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<!-- ROW 6 (Cols 1-16): All dark-slate -->
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+<div class="board-tile bg-[#2A3742]"></div>
+</div>
+</div>
+<!-- Sotto il mosaico, nel wrapper -->
+<div class="max-w-[1200px] w-full mx-auto px-4 mt-[20px] pb-[48px]">
+<p class="font-mono text-[13px] text-[#B8C0C6] text-right">
+ Esempio illustrativo · ogni tessera è una zona, quelle accese sono da guardare per prime
+ </p>
+</div>
+</section>
+<!-- 5. COSA CAMBIA -->
+<section class="w-full bg-[#F3F1EC] py-[96px]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<span class="font-mono text-[12px] text-[#4A5B68] block">Cosa cambia</span>
+<!-- Tabella a 12 colonne senza bordi esterni -->
+<div class="mt-[32px] w-full">
+<!-- Intestazioni -->
+<div class="grid grid-cols-12">
+<div class="col-span-4 pt-[16px] pb-[16px] border-b border-[#D9DAD6] flex items-end font-mono text-[12px] text-[#4A5B68]">Oggi</div>
+<div class="col-span-4 pt-[16px] pb-[16px] pl-6 border-b border-[#D9DAD6] flex items-end font-mono text-[12px] text-[#4A5B68]">Cosa manca</div>
+<div class="col-span-4 bg-[#14202B] px-[24px] pt-[24px] pb-[16px] flex items-end font-sans font-semibold text-[14px] text-[#F3F1EC]">Con netSENS</div>
+</div>
+<!-- Riga 1 -->
+<div class="grid grid-cols-12 items-stretch">
+<div class="col-span-4 py-[24px] pr-6 border-b border-[#D9DAD6] font-sans font-semibold text-[18px] text-[#14202B] flex items-center">
+ Contatori e dashboard
+ </div>
+<div class="col-span-4 py-[24px] px-6 border-b border-[#D9DAD6] font-sans text-[18px] text-[#4A5B68] flex items-center">
+ Vedono i consumi, non trovano le perdite
+ </div>
+<div class="col-span-4 bg-[#14202B] px-[24px] py-[24px] border-t border-[#2A3742] flex items-center">
+<span class="font-sans font-semibold text-[18px] text-[#F3F1EC]">Indica dove è più probabile una perdita, zona per zona</span>
+</div>
+</div>
+<!-- Riga 2 -->
+<div class="grid grid-cols-12 items-stretch">
+<div class="col-span-4 py-[24px] pr-6 border-b border-[#D9DAD6] font-sans font-semibold text-[18px] text-[#14202B] flex items-center">
+ Allarmi puntuali
+ </div>
+<div class="col-span-4 py-[24px] px-6 border-b border-[#D9DAD6] font-sans text-[18px] text-[#4A5B68] flex items-center">
+ Coprono un solo punto e richiedono tecnici specializzati
+ </div>
+<div class="col-span-4 bg-[#14202B] px-[24px] py-[24px] border-t border-[#2A3742] flex items-center">
+<span class="font-sans font-semibold text-[18px] text-[#F3F1EC]">Niente squadre esterne: lavora il tuo personale</span>
+</div>
+</div>
+<!-- Riga 3 -->
+<div class="grid grid-cols-12 items-stretch">
+<div class="col-span-4 py-[24px] pr-6 border-b border-[#D9DAD6] font-sans font-semibold text-[18px] text-[#14202B] flex items-center">
+ Ispezioni manuali
+ </div>
+<div class="col-span-4 py-[24px] px-6 border-b border-[#D9DAD6] font-sans text-[18px] text-[#4A5B68] flex items-center">
+ Si fanno una volta e costano
+ </div>
+<div class="col-span-4 bg-[#14202B] px-[24px] py-[24px] border-t border-[#2A3742] flex items-center">
+<span class="font-sans font-semibold text-[18px] text-[#F3F1EC]">Una verifica che puoi ripetere, su uno o più impianti</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. COME SI LAVORA -->
+<section id="come-si-lavora" class="w-full bg-[#F3F1EC] py-[96px] border-t border-[#D9DAD6]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<!-- Griglia superiore: Titolo a sinistra, passi a destra -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<div class="col-span-5">
+<h2 class="font-serif font-[500] text-[96px] text-[#14202B] leading-[0.95] text-balance tracking-[-0.03em]">
+ Come<br>si lavora
+ </h2>
+</div>
+<div class="col-span-7">
+<!-- Passo 01 -->
+<div class="border-t border-[#D9DAD6] py-[24px]">
+<div class="font-mono text-[13px] text-[#4A5B68]">01</div>
+<h3 class="mt-[8px] font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Definiamo la prova insieme.</h3>
+<p class="mt-[8px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Perimetro, obiettivi misurabili e budget, fissati prima di cominciare.
+ </p>
+</div>
+<!-- Passo 02 -->
+<div class="border-t border-[#D9DAD6] py-[24px]">
+<div class="font-mono text-[13px] text-[#4A5B68]">02</div>
+<h3 class="mt-[8px] font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Il tuo personale fa la diagnosi.</h3>
+<p class="mt-[8px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Anche chi non è un tecnico: bastano le persone che ci lavorano ogni giorno.
+ </p>
+</div>
+<!-- Passo 03 -->
+<div class="border-t border-[#D9DAD6] py-[24px]">
+<div class="font-mono text-[13px] text-[#4A5B68]">03</div>
+<h3 class="mt-[8px] font-serif font-[500] text-[28px] leading-[1.05] text-[#14202B]">Ricevi il rapporto.</h3>
+<p class="mt-[8px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Le zone dove è più probabile che si perda acqua, in ordine di priorità. Sai da dove partire e decidi la manutenzione con dati alla mano.
+ </p>
+</div>
+</div>
+</div>
+<!-- 80px sotto: Rapporto a tutta larghezza (documento) -->
+<div class="mt-[80px]">
+<div class="flex items-baseline justify-between pb-[12px]">
+<h4 class="font-serif font-[500] text-[32px] leading-[1.05] text-[#14202B]">Rapporto diagnostico</h4>
+<span class="font-mono text-[12px] text-[#4A5B68]">Esempio illustrativo</span>
+</div>
+<!-- Filetto 2px #14202B -->
+<div class="h-[2px] w-full bg-[#14202B]">
+</div>
+<!-- Tre righe fisse a 12 colonne separate da filetti 1px #D9DAD6 -->
+<!-- Riga A -->
+<div class="border-b border-[#D9DAD6] py-[24px] grid grid-cols-12 gap-6 items-center">
+<div class="col-span-4 font-serif font-[500] text-[40px] leading-[1.05] text-[#14202B]">Zona A</div>
+<div class="col-span-3 flex items-center gap-[10px]">
+<div class="w-[16px] h-[16px] bg-[#E8912D] flex-shrink-0">
+</div>
+<span class="font-mono text-[14px] text-[#14202B]">Priorità 1</span>
+</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">Da ispezionare per prima</div>
+</div>
+<!-- Riga B -->
+<div class="border-b border-[#D9DAD6] py-[24px] grid grid-cols-12 gap-6 items-center">
+<div class="col-span-4 font-serif font-[500] text-[40px] leading-[1.05] text-[#14202B]">Zona B</div>
+<div class="col-span-3 flex items-center gap-[10px]">
+<div class="w-[16px] h-[16px] bg-[#D9DAD6] flex-shrink-0">
+</div>
+<span class="font-mono text-[14px] text-[#14202B]">Priorità 2</span>
+</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">Da ispezionare dopo</div>
+</div>
+<!-- Riga C -->
+<div class="border-b border-[#D9DAD6] py-[24px] grid grid-cols-12 gap-6 items-center">
+<div class="col-span-4 font-serif font-[500] text-[40px] leading-[1.05] text-[#14202B]">Zona C</div>
+<div class="col-span-3 flex items-center gap-[10px]">
+<div class="w-[16px] h-[16px] bg-[#D9DAD6] flex-shrink-0">
+</div>
+<span class="font-mono text-[14px] text-[#14202B]">Priorità 3</span>
+</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">Da rivedere alla prossima verifica</div>
+</div>
+</div>
+<!-- 48px sotto: Pulsante 'Candida il tuo impianto' -->
+<div class="mt-[48px]">
+<a href="#candidatura" class="btn-ink inline-flex items-center justify-center font-sans font-semibold text-[17px] h-[56px] px-[28px] rounded-[2px]">
+ Candida il tuo impianto
+ </a>
+</div>
+</div>
+</section>
+<!-- 7. PER CHI È -->
+<section class="w-full bg-[#F3F1EC] py-[96px] border-t border-[#D9DAD6]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<span class="font-mono text-[12px] text-[#4A5B68] block">Per chi è</span>
+<h2 class="mt-[8px] font-serif font-[500] text-[44px] leading-[1.05] text-[#14202B] text-balance tracking-[-0.03em]">Per chi gestisce l'acqua di un edificio o di uno stabilimento.</h2>
+<!-- Elenco tipografico 4 righe -->
+<div class="mt-[48px] border-b border-[#D9DAD6]">
+<!-- Voce 1 -->
+<div class="border-t border-[#D9DAD6] py-[20px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-7 font-serif font-[500] text-[56px] leading-[1.05] text-[#14202B] tracking-[-0.03em]">Siti industriali</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">con circuiti idrici interni</div>
+</div>
+<!-- Voce 2 -->
+<div class="border-t border-[#D9DAD6] py-[20px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-7 font-serif font-[500] text-[56px] leading-[1.05] text-[#14202B] tracking-[-0.03em]">Campus</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">e complessi di edifici</div>
+</div>
+<!-- Voce 3 -->
+<div class="border-t border-[#D9DAD6] py-[20px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-7 font-serif font-[500] text-[56px] leading-[1.05] text-[#14202B] tracking-[-0.03em]">Proprietari e gestori</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">con più sedi</div>
+</div>
+<!-- Voce 4 -->
+<div class="border-t border-[#D9DAD6] py-[20px] grid grid-cols-12 gap-6 items-baseline">
+<div class="col-span-7 font-serif font-[500] text-[56px] leading-[1.05] text-[#14202B] tracking-[-0.03em]">Società di servizi</div>
+<div class="col-span-5 font-sans text-[18px] text-[#4A5B68]">
+ facility management, energia, assicurazioni, ingegneria: puoi portare netSENS ai clienti che segui.
+ </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. DOVE SIAMO OGGI -->
+<section class="w-full bg-[#F3F1EC] pt-[64px] pb-[96px] border-t border-[#D9DAD6]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-6">
+<h2 class="font-serif font-[500] text-[44px] leading-[1.05] text-[#14202B] text-balance tracking-[-0.03em]">Dove siamo oggi.</h2>
+<p class="mt-[16px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Il primo traguardo è raggiunto. Ora netSENS va provato in laboratorio e poi su un impianto vero: per questo cerchiamo i primi impianti con cui lavorare.
+ </p>
+</div>
+</div>
+<!-- 56px sotto: Tre colonne con tappe -->
+<div class="mt-[56px] grid grid-cols-3 gap-12">
+<!-- Tappa 01 -->
+<div>
+<div class="h-[2px] w-full bg-[#14202B]">
+</div>
+<div class="mt-[20px] font-serif font-[500] text-[96px] text-[#14202B] leading-none tracking-[-0.03em]">01</div>
+<div class="mt-[12px] font-mono text-[12px] text-[#4A5B68]">Fatto</div>
+<div class="mt-[6px] font-serif font-[500] text-[24px] leading-[1.05] text-[#14202B]">Prova di concetto computazionale</div>
+</div>
+<!-- Tappa 02 -->
+<div>
+<div class="h-[2px] w-full bg-[#D9DAD6]">
+</div>
+<div class="mt-[20px] font-serif font-[500] text-[96px] text-[#4A5B68] leading-none tracking-[-0.03em]">02</div>
+<div class="mt-[12px] font-mono text-[12px] text-[#4A5B68]">Prossimo passo</div>
+<div class="mt-[6px] font-serif font-[500] text-[24px] leading-[1.05] text-[#14202B]">Prova in laboratorio</div>
+</div>
+<!-- Tappa 03 -->
+<div>
+<div class="h-[2px] w-full bg-[#D9DAD6]">
+</div>
+<div class="mt-[20px] font-serif font-[500] text-[96px] text-[#4A5B68] leading-none tracking-[-0.03em]">03</div>
+<div class="mt-[12px] font-mono text-[12px] text-[#4A5B68]">Poi</div>
+<div class="mt-[6px] font-serif font-[500] text-[24px] leading-[1.05] text-[#14202B]">Prima prova sul campo, con te</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. CHI C'È DIETRO E PER CHI INVESTE -->
+<section class="w-full bg-[#F3F1EC] py-[96px] border-t border-[#D9DAD6]">
+<div class="max-w-[1200px] w-full mx-auto px-4 grid grid-cols-2 gap-16 relative">
+<!-- Vertical separator -->
+<div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#D9DAD6] -translate-x-1/2">
+</div>
+<!-- Colonna sinistra: Chi c'è dietro -->
+<div class="pr-6">
+<h2 class="font-serif font-[500] text-[44px] leading-[1.05] text-[#14202B] text-balance tracking-[-0.03em]">Chi c'è dietro.</h2>
+<div class="mt-[32px] flex items-center gap-6">
+<!-- Segnaposto 112px MG con quadratino ambra 12px -->
+<div class="relative w-[112px] h-[112px] bg-[#14202B] flex items-center justify-center flex-shrink-0 select-none">
+<span class="font-serif font-[500] text-[44px] leading-[1.05] text-[#F3F1EC] tracking-[-0.03em]">MG</span>
+<div class="absolute top-0 right-0 w-[12px] h-[12px] bg-[#E8912D]">
+</div>
+</div>
+<div>
+<div class="font-sans font-semibold text-[18px] text-[#14202B]">Michele Grassi</div>
+<div class="font-mono text-[12px] text-[#4A5B68] mt-1">Fondatore e CEO</div>
+</div>
+</div>
+<p class="mt-[28px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Mathclick è una startup deep-tech di Pisa. L'ha fondata e la guida Michele Grassi, matematico: ha fatto ricerca e insegnato all'Università di Pisa e lavora da anni su modelli numerici e sistemi di sensori.
+ </p>
+</div>
+<!-- Colonna destra: Per chi investe -->
+<div class="pl-6">
+<h2 class="font-serif font-[500] text-[44px] leading-[1.05] text-[#14202B] text-balance tracking-[-0.03em]">Per chi investe.</h2>
+<p class="mt-[32px] font-sans text-[18px] text-[#4A5B68] leading-[1.6]">
+ Mathclick è nel portafoglio di TechBricks, il venture studio che ha investito nel progetto e lo affianca nello sviluppo. Per conoscerlo da vicino, scrivici.
+ </p>
+<div class="mt-[24px]">
+<a href="#candidatura" class="inline-flex items-center min-h-[44px] font-sans font-semibold text-[17px] text-[#14202B] underline decoration-1 underline-offset-[4px] hover:text-[#0B6E8F] transition-colors">
+ Scrivici dal modulo, scegliendo «Investo o rappresento un partner»
+ </a>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. CANDIDA IL TUO SITO (Secondo blocco scuro) -->
+<section id="candidatura" class="w-full bg-[#14202B] text-[#F3F1EC] pt-[160px] pb-0 overflow-hidden">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<div class="grid grid-cols-12 gap-12 items-start">
+<!-- Colonna sinistra: 5 colonne -->
+<div class="col-span-5 pr-4">
+<h2 class="font-serif font-[500] text-[64px] text-[#F3F1EC] leading-[1.05] text-balance tracking-[-0.03em]">
+ Cerchiamo i primi impianti.
+ </h2>
+<p class="mt-[24px] font-sans text-[20px] text-[#B8C0C6] leading-[1.5]">
+ Una prova sul tuo impianto, a pagamento, con obiettivi misurabili e un budget fissato prima di cominciare. Raccontaci com'è fatto: ti rispondiamo noi.
+ </p>
+<div class="mt-[48px]">
+<span class="font-sans font-semibold text-[16px] text-[#F3F1EC] block mb-4">Cosa succede dopo</span>
+<div class="border-t border-[#2A3742] py-4 font-sans text-[16px] text-[#B8C0C6]">
+ 1. Leggiamo la tua richiesta.
+ </div>
+<div class="border-t border-[#2A3742] py-4 font-sans text-[16px] text-[#B8C0C6]">
+ 2. Ti contattiamo per conoscere l'impianto e cosa vuoi ottenere.
+ </div>
+<div class="border-t border-[#2A3742] py-4 font-sans text-[16px] text-[#B8C0C6]">
+ 3. Se la prova fa per te, la definiamo insieme: obiettivi, tempi e budget.
+ </div>
+</div>
+</div>
+<!-- Colonna destra: 7 colonne, pannello modulo su carta #F3F1EC -->
+<div class="col-span-7 bg-[#F3F1EC] p-[40px] text-[#14202B]">
+<!-- Frase obbligatorietà spostata in cima -->
+<p class="font-sans text-[14px] text-[#4A5B68] mb-[20px]">
+ Tutti i campi sono obbligatori, tranne il messaggio.
+ </p>
+<form action="#" method="POST" onsubmit="event.preventDefault();" class="space-y-[20px]">
+<!-- Due campi per riga: Nome e Email -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label for="nome" class="block font-sans font-semibold text-[15px] text-[#14202B] mb-2">Nome e cognome</label>
+<input type="text" id="nome" name="nome" required class="w-full h-[48px] px-3 bg-[#FFFFFF] border border-[#4A5B68] rounded-[2px] text-[16px] text-[#14202B]">
+</div>
+<div>
+<label for="email" class="block font-sans font-semibold text-[15px] text-[#14202B] mb-2">Email di lavoro</label>
+<input type="email" id="email" name="email" required class="w-full h-[48px] px-3 bg-[#FFFFFF] border border-[#4A5B68] rounded-[2px] text-[16px] text-[#14202B]">
+</div>
+</div>
+<!-- Due campi per riga: Azienda o ente e Chi sei -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label for="azienda" class="block font-sans font-semibold text-[15px] text-[#14202B] mb-2">Azienda o ente</label>
+<input type="text" id="azienda" name="azienda" required class="w-full h-[48px] px-3 bg-[#FFFFFF] border border-[#4A5B68] rounded-[2px] text-[16px] text-[#14202B]">
+</div>
+<div>
+<label for="ruolo" class="block font-sans font-semibold text-[15px] text-[#14202B] mb-2">Chi sei</label>
+<select id="ruolo" name="ruolo" required class="w-full h-[48px] px-3 bg-[#FFFFFF] border border-[#4A5B68] rounded-[2px] text-[16px] text-[#14202B]">
+<option value="" disabled selected>Seleziona</option>
+<option value="industriale">Gestisco un sito industriale</option>
+<option value="campus">Gestisco un campus o più edifici</option>
+<option value="servizi">Lavoro per una società di servizi</option>
+<option value="investitore">Investo o rappresento un partner</option>
+<option value="altro">Altro</option>
+</select>
+</div>
+</div>
+<!-- Messaggio facoltativo -->
+<div>
+<label for="messaggio" class="block font-sans font-semibold text-[15px] text-[#14202B] mb-2">Messaggio (facoltativo)</label>
+<textarea id="messaggio" name="messaggio" rows="4" class="w-full p-3 bg-[#FFFFFF] border border-[#4A5B68] rounded-[2px] text-[16px] text-[#14202B] resize-none">
+</textarea>
+</div>
+<!-- Checkbox Privacy -->
+<label for="privacy" class="flex items-center gap-3 min-h-[44px] cursor-pointer py-1 select-none">
+<input type="checkbox" id="privacy" name="privacy" required class="w-5 h-5 rounded-[2px] border-[#4A5B68] text-[#14202B] accent-[#14202B] cursor-pointer flex-shrink-0">
+<span class="font-sans text-[14px] text-[#14202B] leading-tight">
+ Ho letto l'<a href="#" class="underline hover:text-[#0B6E8F]" onclick="event.stopPropagation();">informativa sulla privacy</a>
+</span>
+</label>
+<!-- Pulsante submit -->
+<button type="submit" class="btn-ink w-full h-[56px] font-sans font-semibold text-[17px] rounded-[2px] text-[#F3F1EC]">
+ Invia la richiesta
+ </button>
+</form>
+</div>
+</div>
+</div>
+<!-- 128px sotto: Mosaico finale 3 righe x 9 colonne da 40px -->
+<div class="mt-[128px] w-full">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<div>
+<div class="ml-[852px]">
+<!-- Etichetta 'il tuo sito' allineata alla tessera ambra -->
+<div class="pl-[88px] mb-[12px]">
+<span class="font-mono text-[13px] leading-none text-[#F3F1EC] block">il tuo impianto</span>
+</div>
+<!-- Griglia 3 righe x 9 colonne di tessere da 40px con gap da 4px -->
+<div class="inline-grid gap-[4px] select-none" style="grid-template-columns: repeat(9, 40px); width: max-content;">
+<!-- Riga 1 (9 tessere #2A3742) -->
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<!-- Riga 2 (9 tessere: Col 3 è ambra #E8912D) -->
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#E8912D]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<!-- Riga 3 (9 tessere #2A3742) -->
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+<div class="footer-tile-new bg-[#2A3742]">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-[#F3F1EC] border-t border-[#D9DAD6] py-[48px]">
+<div class="max-w-[1200px] w-full mx-auto px-4">
+<!-- Riga 1: Logo -->
+<div class="pb-[32px]">
+<a href="#" class="inline-flex items-center gap-[10px]" aria-label="Mathclick, torna all'inizio">
+<svg width="24" height="20" viewBox="0 0 24 20" aria-hidden="true">
+<rect x="2" y="13" width="20" height="3" fill="#14202B"/>
+<rect x="12" y="6" width="7" height="7" fill="#E8912D"/>
+</svg>
+<span class="font-sans font-semibold text-[22px] text-[#14202B] leading-none">Mathclick</span>
+</a>
+</div>
+<!-- Riga 2: Separata da filetto 1px #D9DAD6 -->
+<div class="pt-[32px] border-t border-[#D9DAD6] flex items-center justify-between font-sans text-[14px] text-[#4A5B68]">
+<div>
+ &copy; 2026 Mathclick SRL · Pisa
+ </div>
+<div class="flex items-center gap-6">
+<a href="#" class="inline-flex items-center min-h-[44px] hover:text-[#0B6E8F] transition-colors">Privacy</a>
+<a href="#" class="inline-flex items-center min-h-[44px] hover:text-[#0B6E8F] transition-colors">Cookie</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
