@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Mathclick · netSENS</title>
+<meta name="description" content="netSENS è un servizio di diagnostica basato su AI e sensori per siti industriali, campus ed edifici: indica dove è più probabile che si perda acqua e quale zona ispezionare per prima. Senza squadre specializzate.">
+<meta property="og:title" content="Mathclick · netSENS">
+<meta property="og:description" content="netSENS è un servizio di diagnostica basato su AI e sensori per siti industriali, campus ed edifici: indica dove è più probabile che si perda acqua e quale zona ispezionare per prima. Senza squadre specializzate.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -1 24 24'%3E%3Crect x='2' y='13' width='20' height='3' fill='%2314202B'/%3E%3Crect x='12' y='6' width='7' height='7' fill='%23E8912D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -96,6 +100,8 @@
  .hm > span.on { background: #E8912D; }
  .hm-m { display: grid; margin-top: 10px; grid-template-rows: repeat(2, var(--tile)); grid-auto-flow: column; grid-auto-columns: var(--tile); gap: 3px; }
  .hm-m > span { width: var(--tile); height: var(--tile); }
+ /* telefono: 7 colonne su 12, così il frammento finisce prima del bordo destro del contenuto */
+ .hm-m > span:nth-child(n+15) { display: none; }
  .hm-d { display: none; }
 
  @media (min-width: 768px) {
@@ -113,9 +119,13 @@
  .hero-trial { font-size: 15px; line-height: 1.6; margin-top: clamp(8px, 1.6svh, 14px); margin-bottom: 0; }
  .hero-bottom { padding-top: 20px; padding-bottom: 20px; }
  .hm-m { display: none; }
- .hm-d { display: grid; margin-top: 0.22em; grid-template-columns: repeat(10, 0.52em); gap: 4px; }
+ /* computer: 7 colonne su 10 (restano le due tessere ambra), così il frammento resta dentro il contenuto a ogni larghezza */
+ .hm-d { display: grid; margin-top: 0.22em; grid-template-columns: repeat(7, 0.52em); gap: 4px; }
  .hm-d > span { width: 0.52em; height: 0.52em; }
+ .hm-d > span:nth-child(10n+8), .hm-d > span:nth-child(10n+9), .hm-d > span:nth-child(10n+10) { display: none; }
  }
+ /* schermi bassi: il titolo si rimpicciolisce e il frammento finirebbe sopra il sottotitolo; resta la barra ambra */
+ @media (min-width: 768px) and (max-height: 720px) { .hm-d { display: none; } }
 
  /* ---------- Capitolo scuro ---------- */
  .big-num { font-size: clamp(64px, 22.5vw, 88px); line-height: 0.9; letter-spacing: -0.025em; }
@@ -146,8 +156,8 @@
  @media (min-width: 768px) { .hero-bar { height: 6px; } }
 
  /* ---------- Movimento: gli stati nascosti esistono solo sotto .js-fx (messa dallo script se il movimento non è ridotto) ---------- */
- @keyframes fx-fade { from { opacity: 0; } }
- .js-fx .hero-lead, .js-fx .hero-cta { animation: fx-fade 200ms cubic-bezier(0.19, 1, 0.22, 1) both; }
+ /* sottotitolo, pulsanti e riga sulla prova: nascosti finché parte il titolo, poi dissolvenza a 350 ms (l'opacità non toglie i clic) */
+ .js-fx .hero-lead:not(.fx-in), .js-fx .hero-cta:not(.fx-in) { opacity: 0; }
  .js-fx .hero-title:not(.fx-run) { opacity: 0; }
  .js-fx .hero-title:not(.fx-bar) .hero-bar { transform: scaleX(0); }
  .js-fx .hero-title:not(.fx-bar) .hm { opacity: 0; }
@@ -216,9 +226,12 @@
   m.classList.remove('fx-wait');
  }
 
- /* 2. Titolo: le righe che il titolo ha a questa larghezza salgono da sotto un bordo invisibile; poi barra e mosaico */
+ /* 2. Titolo: le righe che il titolo ha a questa larghezza salgono subito da sotto un bordo invisibile; sottotitolo e azioni sfumano da 350 ms; poi barra e mosaico.
+    Se il carattere del titolo non è arrivato entro 400 ms, il titolo compare senza salita. */
  function heroTitle(h1) {
+  all('.hero-lead, .hero-cta').forEach(function (el) { el.classList.add('fx-in'); anim(el, { opacity: [0, 1] }, { duration: 500, delay: 350, fill: 'backwards' }); });
   var dove = h1.querySelector('[data-fx="hero-mosaic"]').parentNode, m = all('[data-fx="hero-mosaic"]', h1).filter(shown)[0];
+  if (!fx.fontOK) { fx.fallback = 2; h1.classList.add('fx-run'); afterTitle(h1, m, [anim(h1, { opacity: [0, 1] }, { duration: 300 })]); return; }
   var hr = h1.getBoundingClientRect(), h0 = hr.height, fs = parseFloat(getComputedStyle(h1).fontSize), rg = document.createRange(), toks = [], lines = [], cur = null;
   (function walk(n) {
    Array.prototype.forEach.call(n.childNodes, function (c) {
@@ -243,9 +256,12 @@
   fx.titleH = [Math.round(h0 * 10) / 10, Math.round(h1.getBoundingClientRect().height * 10) / 10, lines.length, Math.round(Math.hypot(d1.left - d0.left, d1.top - d0.top) * 10) / 10];
   var ins = all('.fx-line-in', h1), anims;
   if (Math.abs(fx.titleH[1] - h0) > 1 || fx.titleH[3] > 1) { restore(); fx.fallback = 1; anims = [anim(h1, { opacity: [0, 1] }, { duration: 600 })]; }
-  else anims = ins.map(function (el, i) { return anim(el, { transform: ['translateY(115%)', 'translateY(0)'] }, { duration: 900, delay: i * 120, fill: 'backwards' }); });
+  else anims = ins.map(function (el, i) { return anim(el, { transform: ['translateY(115%)', 'translateY(0)'] }, { duration: 700, delay: i * 90, fill: 'backwards' }); });
+  afterTitle(h1, m, anims, restore);
+ }
+ function afterTitle(h1, m, anims, restore) {
   done(anims).then(timed(function () {
-   if (h1.classList.contains('fx-split')) restore();
+   if (restore && h1.classList.contains('fx-split')) restore();
    h1.classList.add('fx-bar');
    var bar = h1.querySelector('.hero-bar');
    if (bar) anim(bar, { transform: ['scaleX(0)', 'scaleX(1)'] }, { duration: 600, fill: 'backwards' });
@@ -253,7 +269,7 @@
   }));
  }
 
- /* 3. Numero a rulli: le cifre fanno un giro e si fermano, virgola e % ferme; poi il mosaico grande */
+ /* 3. Numero a rulli: ogni rullo parte dalla cifra vera, fa un giro completo e si ferma sulla stessa cifra (da fermo si legge sempre 42,4%), virgola e % ferme */
  var num = null, numSt = 0, boards = [];
  function prepNum(el) {
   var old = el.querySelector('.fx-roll'); if (old) el.removeChild(old);
@@ -267,7 +283,7 @@
    var r = rg.getBoundingClientRect(), c = document.createElement('span');
    c.className = 'fx-ch'; c.style.cssText = 'left:' + (r.left - box.left) + 'px;top:' + (r.top - box.top) + 'px;width:' + r.width + 'px;height:' + r.height + 'px;line-height:' + r.height + 'px';
    if (/\d/.test(ch)) {
-    var s = document.createElement('span'); for (var k = 0; k <= 10 + +ch; k++) { var d = document.createElement('span'); d.textContent = k % 10; s.appendChild(d); }
+    var s = document.createElement('span'); for (var k = 0; k <= 10; k++) { var d = document.createElement('span'); d.textContent = (+ch + k) % 10; s.appendChild(d); }
     c.classList.add('fx-reel'); c.dataset.d = ch; c.dataset.h = r.height; c.appendChild(s);
    } else c.textContent = ch;
    ov.appendChild(c);
@@ -279,23 +295,24 @@
   if (numSt !== 1) return; numSt = 2;
   var reels = all('.fx-reel', el), n = reels.length;
   done(reels.map(function (c, i) {
-   return anim(c.firstChild, { transform: ['translateY(0)', 'translateY(' + (-(10 + +c.dataset.d) * +c.dataset.h) + 'px)'] }, { duration: 1400 + (n - 1 - i) * 200, fill: 'forwards' });
+   return anim(c.firstChild, { transform: ['translateY(0)', 'translateY(' + (-10 * +c.dataset.h) + 'px)'] }, { duration: 1400 + (n - 1 - i) * 200, fill: 'forwards' });
   })).then(timed(function () {
    var ov = el.querySelector('.fx-roll'); if (ov) el.removeChild(ov);
    el.classList.remove('fx-num'); uncss(el, ['--fx-c']); numSt = 3; boardTry();
   }));
  }
- function boardTry() { if (numSt === 3) boards.forEach(function (b) { if (b.fxSeen && shown(b)) runMosaic(b, 0); }); }
+ /* il mosaico grande aspetta la fine del rullo solo se il numero sta girando; se il numero non è stato visto (arrivo dall'ancora, ricarica a metà pagina) si accende appena è in vista */
+ function boardTry() { if (numSt !== 2) boards.forEach(function (b) { if (b.fxSeen && shown(b)) runMosaic(b, 0); }); }
 
- /* 4. Righe del problema: si inchiostrano da sinistra a destra mentre attraversano la fascia 85%-35% (telefono 80%-50%) */
+ /* 4. Righe del problema: si inchiostrano da sinistra a destra mentre attraversano la fascia 95%-60% (telefono 90%-60%); l'inchiostro cresce soltanto, non torna mai indietro */
  function ink(c) {
   var els = [];
   kids(c).forEach(function (R) { kids(R).forEach(function (k) { if (k.textContent.trim()) { css(k, { '--fx-to': getComputedStyle(k).color }); k.classList.add('fx-ink'); els.push(k); } }); });
   var on = false, raf = 0;
   function frame() {
    raf = 0;
-   var vh = innerHeight, mob = innerWidth < 768, a = vh * (mob ? 0.8 : 0.85), b = vh * (mob ? 0.5 : 0.35);
-   els.forEach(function (k) { var r = k.getBoundingClientRect(), p = Math.min(1, Math.max(0, (a - r.top - r.height / 2) / (a - b))); p = Math.round(p * 1000) / 1000; if (k.fxP !== p) { k.fxP = p; k.style.setProperty('--p', p); } });
+   var vh = innerHeight, mob = innerWidth < 768, a = vh * (mob ? 0.9 : 0.95), b = vh * 0.6;
+   els.forEach(function (k) { var r = k.getBoundingClientRect(), p = Math.min(1, Math.max(0, (a - r.top - r.height / 2) / (a - b))); p = Math.max(k.fxP || 0, Math.round(p * 1000) / 1000); if (k.fxP !== p) { k.fxP = p; k.style.setProperty('--p', p); } });
   }
   var tf = timed(frame);
   function req() { if (on && !raf) raf = requestAnimationFrame(tf); }
@@ -360,9 +377,10 @@
   addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(timed(function () { if (num && numSt === 1) prepNum(num); }), 150); });
  }
 
+ /* si parte appena il carattere del titolo è pronto, al massimo dopo 400 ms; se non è pronto, il titolo compare senza salita */
  document.addEventListener('DOMContentLoaded', function () {
-  var f = document.fonts && document.fonts.load ? document.fonts.load('500 1em Newsreader').catch(function () {}) : null;
-  Promise.race([f, wait(500)].filter(Boolean)).then(function () { requestAnimationFrame(timed(init)); });
+  var f = document.fonts && document.fonts.load ? document.fonts.load('500 1em Newsreader').then(function (l) { fx.fontOK = !!(l && l.length); }, function () {}) : null;
+  Promise.race([f, wait(400)].filter(Boolean)).then(function () { requestAnimationFrame(timed(init)); });
  });
 })();
 </script>
@@ -634,7 +652,7 @@
 <div class="md:grid md:grid-cols-12 md:gap-6 md:items-start">
 <div class="md:col-span-5">
 <h2 class="font-serif font-medium text-[44px] md:text-[length:clamp(56px,7.5vw,96px)] text-inchiostro leading-[0.95] text-balance tracking-[-0.03em] mb-8 md:mb-0">
- Come<br>si lavora
+ Come <br>si lavora
  </h2>
 </div>
 <div class="md:col-span-7 mb-10 md:mb-0" data-fx="steps">
@@ -803,7 +821,7 @@
  Mathclick è nel portafoglio di TechBricks, il venture studio che ha investito nel progetto e lo affianca nello sviluppo. Per conoscerlo da vicino, scrivici.
  </p>
 <div class="md:mt-[24px] min-h-[44px] flex items-center mb-2 md:mb-0">
-<a href="#candidatura" class="inline-flex items-center min-h-[44px] font-sans font-semibold text-[16px] md:text-[17px] text-inchiostro underline decoration-1 md:underline-offset-[4px] hover:text-blu-rete transition-colors">
+<a href="#candidatura" data-ruolo="investitore" class="inline-flex items-center min-h-[44px] font-sans font-semibold text-[16px] md:text-[17px] text-inchiostro underline decoration-1 md:underline-offset-[4px] hover:text-blu-rete transition-colors">
  Scrivici dal modulo, scegliendo «Investo o rappresento un partner»
  </a>
 </div>
@@ -835,7 +853,7 @@
 <p class="font-sans text-[14px] text-ardesia mb-4 md:mb-[20px]">
  Tutti i campi sono obbligatori, tranne il messaggio.
  </p>
-<form action="#" method="POST" onsubmit="event.preventDefault();" class="space-y-4 md:space-y-[20px]">
+<form id="modulo" action="#" method="POST" class="space-y-4 md:space-y-[20px]">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div>
 <label for="nome" class="block font-sans font-medium md:font-semibold text-[15px] text-inchiostro mb-1.5 md:mb-2">Nome e cognome</label>
@@ -874,12 +892,13 @@
 </div>
 <label for="privacy" class="flex items-center gap-2.5 md:gap-3 min-h-[44px] w-full cursor-pointer py-1 select-none font-sans text-[14px] text-ardesia md:text-inchiostro leading-normal md:leading-tight">
 <input type="checkbox" id="privacy" name="privacy" required class="w-5 h-5 rounded-[2px] border border-ardesia accent-inchiostro cursor-pointer shrink-0">
-<span>Ho letto l'<a href="#" class="underline text-inchiostro hover:text-blu-rete" onclick="event.stopPropagation();">informativa sulla privacy</a></span>
+<span>Ho letto l'informativa sulla privacy</span>
 </label>
 <button type="submit" class="btn-ink w-full h-[52px] md:h-[56px] font-sans font-semibold text-[16px] md:text-[17px] rounded-[2px] text-carta">
  Invia la richiesta
  </button>
 </form>
+<p id="modulo-stato" role="status" class="font-sans text-[15px] md:text-[16px] text-inchiostro leading-normal"></p>
 </div>
 </div>
 </div>
@@ -922,11 +941,25 @@
 <div class="pt-6 md:pt-[32px] border-t border-filetto space-y-4 md:space-y-0 md:flex md:items-center md:justify-between font-sans text-[14px] text-ardesia">
 <div>&copy; 2026 Mathclick SRL · Pisa</div>
 <div class="flex items-center gap-5 md:gap-6">
-<a href="#" class="inline-flex items-center min-h-[44px] hover:text-blu-rete transition-colors">Privacy</a>
-<a href="#" class="inline-flex items-center min-h-[44px] hover:text-blu-rete transition-colors">Cookie</a>
+<span class="inline-flex items-center min-h-[44px]">Privacy</span>
+<span class="inline-flex items-center min-h-[44px]">Cookie</span>
 </div>
 </div>
 </div>
 </footer>
+<script>
+/* Modulo in anteprima: dopo la validazione del browser non invia nulla e lo dice; il link per chi investe preseleziona la sua voce */
+(function () {
+ var form = document.getElementById('modulo'), st = document.getElementById('modulo-stato'), sel = document.getElementById('ruolo');
+ if (form && st) form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  st.style.marginTop = '16px';
+  st.textContent = 'Grazie. Questa è un\'anteprima: la richiesta non viene ancora inviata.';
+ });
+ Array.prototype.forEach.call(document.querySelectorAll('a[data-ruolo]'), function (a) {
+  a.addEventListener('click', function () { if (sel) { sel.value = a.getAttribute('data-ruolo'); sel.dispatchEvent(new Event('change', { bubbles: true })); } });
+ });
+})();
+</script>
 </body>
 </html>
